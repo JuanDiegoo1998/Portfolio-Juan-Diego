@@ -76,5 +76,123 @@
   <footer>
     <p>© 2026 Juan Diego • Made with motivation in the Netherlands</p>
   </footer>
+
+  <!-- Language Switcher -->
+<div class="lang-switcher">
+  <select id="language-select">
+    <option value="en">English</option>
+    <option value="nl">Nederlands</option>
+  </select>
+</div>
+
+<!-- Dark Mode Toggle Button -->
+<button id="theme-toggle" aria-label="Toggle dark mode">
+  🌙 Dark Mode
+</button>
+
+<!-- Script al final -->
+<script>
+  // === Language Switcher ===
+  const translations = {
+    en: {
+      title: "Juan Diego | Computer Engineer Seeking IT Traineeship in NL",
+      greeting: "Hi, I'm Juan Diego",
+      subtitle: "Recent Computer Engineering Graduate • Seeking IT Traineeship in the Netherlands 2026",
+      aboutTitle: "About Me",
+      aboutText1: "I'm a recent graduate passionate about technology. I moved to the Netherlands (Dordrecht) to start my career in IT through a traineeship program. Quick learner, focused on web development basics and Python, open to cloud/DevOps opportunities.",
+      aboutText2: "Why NL? Innovative tech scene, great work-life balance, and strong support for juniors.",
+      skillsTitle: "Skills",
+      skills: ["HTML5 & CSS3", "JavaScript (basic/intermediate)", "Python (in progress)", "Git & GitHub", "Responsive Design", "Basic SQL"],
+      contactTitle: "Contact",
+      contactText: "I'm open to traineeship opportunities! Reach out via LinkedIn or email.",
+      contactBtn: "Connect on LinkedIn",
+      footer: "© 2026 Juan Diego • Made with motivation in the Netherlands"
+    },
+    nl: {
+      title: "Juan Diego | Informatica Ingenieur op zoek naar IT Traineeship in NL",
+      greeting: "Hoi, ik ben Juan Diego",
+      subtitle: "Recent afgestudeerd in Informatica • Op zoek naar IT Traineeship in Nederland 2026",
+      aboutTitle: "Over Mij",
+      aboutText1: "Ik ben een recent afgestudeerde met passie voor technologie. Ik ben naar Nederland (Dordrecht) verhuisd om mijn carrière in IT te starten via een traineeship-programma. Snelle leerling, gefocust op basis webontwikkeling en Python, open voor cloud/DevOps kansen.",
+      aboutText2: "Waarom Nederland? Innovatieve tech-scene, uitstekende werk-privé balans en sterke ondersteuning voor juniors.",
+      skillsTitle: "Vaardigheden",
+      skills: ["HTML5 & CSS3", "JavaScript (basis/intermediair)", "Python (in uitvoering)", "Git & GitHub", "Responsive Design", "Basis SQL"],
+      contactTitle: "Contact",
+      contactText: "Ik sta open voor traineeship-kansen! Neem contact op via LinkedIn of e-mail.",
+      contactBtn: "Verbinden op LinkedIn",
+      footer: "© 2026 Juan Diego • Gemaakt met motivatie in Nederland"
+    }
+  };
+
+  const langSelect = document.getElementById('language-select');
+  const elementsToTranslate = {
+    greeting: document.querySelector('h1'),
+    subtitle: document.querySelector('.hero p'),
+    aboutTitle: document.querySelector('#about h2'),
+    aboutText1: document.querySelector('#about p:first-of-type'),
+    aboutText2: document.querySelector('#about p:last-of-type'),
+    skillsTitle: document.querySelector('#skills h2'),
+    contactTitle: document.querySelector('#contact h2'),
+    contactText: document.querySelector('#contact p'),
+    contactBtn: document.querySelector('#contact .btn'),
+    footer: document.querySelector('footer p')
+  };
+
+  function setLanguage(lang) {
+    const t = translations[lang];
+    document.title = t.title;
+    elementsToTranslate.greeting.textContent = t.greeting;
+    elementsToTranslate.subtitle.textContent = t.subtitle;
+    elementsToTranslate.aboutTitle.textContent = t.aboutTitle;
+    elementsToTranslate.aboutText1.textContent = t.aboutText1;
+    elementsToTranslate.aboutText2.textContent = t.aboutText2;
+    elementsToTranslate.skillsTitle.textContent = t.skillsTitle;
+
+    // Skills list
+    const skillsList = document.querySelectorAll('#skills li');
+    skillsList.forEach((li, i) => {
+      li.textContent = t.skills[i];
+    });
+
+    elementsToTranslate.contactTitle.textContent = t.contactTitle;
+    elementsToTranslate.contactText.textContent = t.contactText;
+    elementsToTranslate.contactBtn.textContent = t.contactBtn;
+    elementsToTranslate.footer.textContent = t.footer;
+
+    localStorage.setItem('preferredLang', lang);
+  }
+
+  // Load saved language or default to English
+  const savedLang = localStorage.getItem('preferredLang') || 'en';
+  langSelect.value = savedLang;
+  setLanguage(savedLang);
+
+  langSelect.addEventListener('change', (e) => {
+    setLanguage(e.target.value);
+  });
+
+  // === Dark Mode Toggle ===
+  const toggleBtn = document.getElementById('theme-toggle');
+  const html = document.documentElement;
+
+  // Load saved theme
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  if (savedTheme === 'dark') {
+    html.classList.add('dark');
+    toggleBtn.textContent = '☀️ Light Mode';
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    if (html.classList.contains('dark')) {
+      html.classList.remove('dark');
+      toggleBtn.textContent = '🌙 Dark Mode';
+      localStorage.setItem('theme', 'light');
+    } else {
+      html.classList.add('dark');
+      toggleBtn.textContent = '☀️ Light Mode';
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+</script>
 </body>
 </html>
