@@ -90,9 +90,8 @@
   🌙 Dark Mode
 </button>
 
-<!-- Script al final -->
 <script>
-  // === Language Switcher ===
+  // === Language Toggle with Flags ===
   const translations = {
     en: {
       title: "Juan Diego | Computer Engineer Seeking IT Traineeship in NL",
@@ -124,7 +123,6 @@
     }
   };
 
-  const langSelect = document.getElementById('language-select');
   const elementsToTranslate = {
     greeting: document.querySelector('h1'),
     subtitle: document.querySelector('.hero p'),
@@ -138,6 +136,9 @@
     footer: document.querySelector('footer p')
   };
 
+  const langToggle = document.getElementById('lang-toggle');
+  let currentLang = localStorage.getItem('preferredLang') || 'en';
+
   function setLanguage(lang) {
     const t = translations[lang];
     document.title = t.title;
@@ -148,11 +149,8 @@
     elementsToTranslate.aboutText2.textContent = t.aboutText2;
     elementsToTranslate.skillsTitle.textContent = t.skillsTitle;
 
-    // Skills list
     const skillsList = document.querySelectorAll('#skills li');
-    skillsList.forEach((li, i) => {
-      li.textContent = t.skills[i];
-    });
+    skillsList.forEach((li, i) => li.textContent = t.skills[i]);
 
     elementsToTranslate.contactTitle.textContent = t.contactTitle;
     elementsToTranslate.contactText.textContent = t.contactText;
@@ -160,36 +158,37 @@
     elementsToTranslate.footer.textContent = t.footer;
 
     localStorage.setItem('preferredLang', lang);
+
+    // Change flag
+    langToggle.textContent = lang === 'en' ? '🇳🇱' : '🇬🇧';
+    langToggle.setAttribute('aria-label', lang === 'en' ? 'Switch to Nederlands' : 'Switch to English');
   }
 
-  // Load saved language or default to English
-  const savedLang = localStorage.getItem('preferredLang') || 'en';
-  langSelect.value = savedLang;
-  setLanguage(savedLang);
+  setLanguage(currentLang);
 
-  langSelect.addEventListener('change', (e) => {
-    setLanguage(e.target.value);
+  langToggle.addEventListener('click', () => {
+    currentLang = currentLang === 'en' ? 'nl' : 'en';
+    setLanguage(currentLang);
   });
 
   // === Dark Mode Toggle ===
-  const toggleBtn = document.getElementById('theme-toggle');
+  const themeToggle = document.getElementById('theme-toggle');
   const html = document.documentElement;
-
-  // Load saved theme
   const savedTheme = localStorage.getItem('theme') || 'light';
+
   if (savedTheme === 'dark') {
     html.classList.add('dark');
-    toggleBtn.textContent = '☀️ Light Mode';
+    themeToggle.textContent = '☀️ Light Mode';
   }
 
-  toggleBtn.addEventListener('click', () => {
+  themeToggle.addEventListener('click', () => {
     if (html.classList.contains('dark')) {
       html.classList.remove('dark');
-      toggleBtn.textContent = '🌙 Dark Mode';
+      themeToggle.textContent = '🌙 Dark Mode';
       localStorage.setItem('theme', 'light');
     } else {
       html.classList.add('dark');
-      toggleBtn.textContent = '☀️ Light Mode';
+      themeToggle.textContent = '☀️ Light Mode';
       localStorage.setItem('theme', 'dark');
     }
   });
