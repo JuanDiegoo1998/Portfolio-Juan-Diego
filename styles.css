@@ -189,6 +189,34 @@ footer {
   --accent: #4da6ff;
 }
 
+#lang-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10000;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #0070f3;
+  color: white;
+  font-size: 2rem;
+  border: none;
+  cursor: pointer;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+#lang-toggle:hover {
+  transform: scale(1.15);
+}
+
+.dark #lang-toggle {
+  background: #4da6ff;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   nav ul {
