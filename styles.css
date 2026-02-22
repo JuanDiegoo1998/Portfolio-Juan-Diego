@@ -135,6 +135,13 @@ footer {
   transform: translateY(-2px);
 }
 
+#lang-toggle img {
+  width: 32px;
+  height: 24px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
 #lang-toggle {
   position: fixed;
   top: 1rem;
@@ -153,7 +160,6 @@ footer {
   justify-content: center;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   transition: all 0.3s ease;
-  font-family: "Twemoji Country Flags", sans-serif !important;
 }
 
 #lang-toggle:hover {
