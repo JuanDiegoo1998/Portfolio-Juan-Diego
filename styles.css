@@ -14,13 +14,11 @@ body {
 header {
   background: var(--header-bg);
   color: var(--header-text);
-  padding: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding: 0.4rem 1rem !important;
   position: sticky;
   top: 0;
-  z-index: 900;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 10;
+  box-shadow: none;
 }
 
 nav ul {
@@ -238,5 +236,4 @@ footer {
 html, body {
   margin: 0 !important;
   padding: 0 !important;
-  height: 100%;
 }
