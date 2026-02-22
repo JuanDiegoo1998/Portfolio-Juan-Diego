@@ -1,2 +1,2 @@
-# Portfolio---Juan-Diego
+# Portfolio - Juan Diego
 Personal portfolio
