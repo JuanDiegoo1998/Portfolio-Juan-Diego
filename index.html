@@ -8,13 +8,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Toggles (fixed position) -->
+  <button id="theme-toggle" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+  <button id="lang-toggle" aria-label="Toggle language">🇳🇱</button>
+
   <header>
     <nav>
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -22,7 +25,7 @@
 
   <main>
     <section id="home" class="hero">
-      <img src="pfp.jpg" alt="Juan Diego" class="profile-pic">
+      <img src="profile.jpg" alt="Juan Diego" class="profile-pic">
       <h1>Hi, I'm Juan Diego</h1>
       <p>Recent Computer Engineering Graduate • Seeking IT Traineeship in the Netherlands 2026</p>
       <div class="social-links">
@@ -50,22 +53,6 @@
       </ul>
     </section>
 
-    <section id="projects">
-  <h2>Projects</h2>
-  <div class="project-grid">
-    <div class="project-card">
-      <h3>Personal Portfolio</h3>
-      <p>My first deployed website showcasing my skills and trainee search.</p>
-      <a href="https://github.com/JuanDiegoo1998/Portfolio-Juan-Diego" target="_blank">View Code</a>
-    </div>
-    <!-- Add more cards later -->
-    <div class="project-card placeholder">
-      <h3>Coming Soon</h3>
-      <p>Simple tools and apps in progress (e.g., Weather App, Expense Tracker).</p>
-    </div>
-  </div>
-</section>
-
     <section id="contact">
       <h2>Contact</h2>
       <p>I'm open to traineeship opportunities! Reach out via LinkedIn or email.</p>
@@ -77,121 +64,112 @@
     <p>© 2026 Juan Diego • Made with motivation in the Netherlands</p>
   </footer>
 
-  <!-- Language Switcher -->
-<div class="lang-switcher">
-  <select id="language-select">
-    <option value="en">English</option>
-    <option value="nl">Nederlands</option>
-  </select>
-</div>
+  <!-- JavaScript for dark mode + language toggle -->
+  <script>
+    // Language Toggle with Flags
+    const translations = {
+      en: {
+        title: "Juan Diego | Computer Engineer Seeking IT Traineeship in NL",
+        greeting: "Hi, I'm Juan Diego",
+        subtitle: "Recent Computer Engineering Graduate • Seeking IT Traineeship in the Netherlands 2026",
+        aboutTitle: "About Me",
+        aboutText1: "I'm a recent graduate passionate about technology. I moved to the Netherlands (Dordrecht) to start my career in IT through a traineeship program. Quick learner, focused on web development basics and Python, open to cloud/DevOps opportunities.",
+        aboutText2: "Why NL? Innovative tech scene, great work-life balance, and strong support for juniors.",
+        skillsTitle: "Skills",
+        skills: ["HTML5 & CSS3", "JavaScript (basic/intermediate)", "Python (in progress)", "Git & GitHub", "Responsive Design", "Basic SQL"],
+        contactTitle: "Contact",
+        contactText: "I'm open to traineeship opportunities! Reach out via LinkedIn or email.",
+        contactBtn: "Connect on LinkedIn",
+        footer: "© 2026 Juan Diego • Made with motivation in the Netherlands"
+      },
+      nl: {
+        title: "Juan Diego | Informatica Ingenieur op zoek naar IT Traineeship in NL",
+        greeting: "Hoi, ik ben Juan Diego",
+        subtitle: "Recent afgestudeerd in Informatica • Op zoek naar IT Traineeship in Nederland 2026",
+        aboutTitle: "Over Mij",
+        aboutText1: "Ik ben een recent afgestudeerde met passie voor technologie. Ik ben naar Nederland (Dordrecht) verhuisd om mijn carrière in IT te starten via een traineeship-programma. Snelle leerling, gefocust op basis webontwikkeling en Python, open voor cloud/DevOps kansen.",
+        aboutText2: "Waarom Nederland? Innovatieve tech-scene, uitstekende werk-privé balans en sterke ondersteuning voor juniors.",
+        skillsTitle: "Vaardigheden",
+        skills: ["HTML5 & CSS3", "JavaScript (basis/intermediair)", "Python (in uitvoering)", "Git & GitHub", "Responsive Design", "Basis SQL"],
+        contactTitle: "Contact",
+        contactText: "Ik sta open voor traineeship-kansen! Neem contact op via LinkedIn of e-mail.",
+        contactBtn: "Verbinden op LinkedIn",
+        footer: "© 2026 Juan Diego • Gemaakt met motivatie in Nederland"
+      }
+    };
 
-<!-- Dark Mode Toggle Button -->
-<button id="theme-toggle" aria-label="Toggle dark mode">
-  🌙 Dark Mode
-</button>
+    const elementsToTranslate = {
+      greeting: document.querySelector('h1'),
+      subtitle: document.querySelector('.hero p'),
+      aboutTitle: document.querySelector('#about h2'),
+      aboutText1: document.querySelector('#about p:first-of-type'),
+      aboutText2: document.querySelector('#about p:last-of-type'),
+      skillsTitle: document.querySelector('#skills h2'),
+      contactTitle: document.querySelector('#contact h2'),
+      contactText: document.querySelector('#contact p'),
+      contactBtn: document.querySelector('#contact .btn'),
+      footer: document.querySelector('footer p')
+    };
 
-<script>
-  // === Language Toggle with Flags ===
-  const translations = {
-    en: {
-      title: "Juan Diego | Computer Engineer Seeking IT Traineeship in NL",
-      greeting: "Hi, I'm Juan Diego",
-      subtitle: "Recent Computer Engineering Graduate • Seeking IT Traineeship in the Netherlands 2026",
-      aboutTitle: "About Me",
-      aboutText1: "I'm a recent graduate passionate about technology. I moved to the Netherlands (Dordrecht) to start my career in IT through a traineeship program. Quick learner, focused on web development basics and Python, open to cloud/DevOps opportunities.",
-      aboutText2: "Why NL? Innovative tech scene, great work-life balance, and strong support for juniors.",
-      skillsTitle: "Skills",
-      skills: ["HTML5 & CSS3", "JavaScript (basic/intermediate)", "Python (in progress)", "Git & GitHub", "Responsive Design", "Basic SQL"],
-      contactTitle: "Contact",
-      contactText: "I'm open to traineeship opportunities! Reach out via LinkedIn or email.",
-      contactBtn: "Connect on LinkedIn",
-      footer: "© 2026 Juan Diego • Made with motivation in the Netherlands"
-    },
-    nl: {
-      title: "Juan Diego | Informatica Ingenieur op zoek naar IT Traineeship in NL",
-      greeting: "Hoi, ik ben Juan Diego",
-      subtitle: "Recent afgestudeerd in Informatica • Op zoek naar IT Traineeship in Nederland 2026",
-      aboutTitle: "Over Mij",
-      aboutText1: "Ik ben een recent afgestudeerde met passie voor technologie. Ik ben naar Nederland (Dordrecht) verhuisd om mijn carrière in IT te starten via een traineeship-programma. Snelle leerling, gefocust op basis webontwikkeling en Python, open voor cloud/DevOps kansen.",
-      aboutText2: "Waarom Nederland? Innovatieve tech-scene, uitstekende werk-privé balans en sterke ondersteuning voor juniors.",
-      skillsTitle: "Vaardigheden",
-      skills: ["HTML5 & CSS3", "JavaScript (basis/intermediair)", "Python (in uitvoering)", "Git & GitHub", "Responsive Design", "Basis SQL"],
-      contactTitle: "Contact",
-      contactText: "Ik sta open voor traineeship-kansen! Neem contact op via LinkedIn of e-mail.",
-      contactBtn: "Verbinden op LinkedIn",
-      footer: "© 2026 Juan Diego • Gemaakt met motivatie in Nederland"
+    const langToggle = document.getElementById('lang-toggle');
+    let currentLang = localStorage.getItem('preferredLang') || 'en';
+
+    function setLanguage(lang) {
+      const t = translations[lang];
+      document.title = t.title;
+      elementsToTranslate.greeting.textContent = t.greeting;
+      elementsToTranslate.subtitle.textContent = t.subtitle;
+      elementsToTranslate.aboutTitle.textContent = t.aboutTitle;
+      elementsToTranslate.aboutText1.textContent = t.aboutText1;
+      elementsToTranslate.aboutText2.textContent = t.aboutText2;
+      elementsToTranslate.skillsTitle.textContent = t.skillsTitle;
+
+      const skillsList = document.querySelectorAll('#skills li');
+      skillsList.forEach((li, i) => li.textContent = t.skills[i]);
+
+      elementsToTranslate.contactTitle.textContent = t.contactTitle;
+      elementsToTranslate.contactText.textContent = t.contactText;
+      elementsToTranslate.contactBtn.textContent = t.contactBtn;
+      elementsToTranslate.footer.textContent = t.footer;
+
+      localStorage.setItem('preferredLang', lang);
+
+      langToggle.textContent = lang === 'en' ? '🇳🇱' : '🇬🇧';
+      langToggle.setAttribute('aria-label', lang === 'en' ? 'Switch to Nederlands' : 'Switch to English');
     }
-  };
 
-  const elementsToTranslate = {
-    greeting: document.querySelector('h1'),
-    subtitle: document.querySelector('.hero p'),
-    aboutTitle: document.querySelector('#about h2'),
-    aboutText1: document.querySelector('#about p:first-of-type'),
-    aboutText2: document.querySelector('#about p:last-of-type'),
-    skillsTitle: document.querySelector('#skills h2'),
-    contactTitle: document.querySelector('#contact h2'),
-    contactText: document.querySelector('#contact p'),
-    contactBtn: document.querySelector('#contact .btn'),
-    footer: document.querySelector('footer p')
-  };
-
-  const langToggle = document.getElementById('lang-toggle');
-  let currentLang = localStorage.getItem('preferredLang') || 'en';
-
-  function setLanguage(lang) {
-    const t = translations[lang];
-    document.title = t.title;
-    elementsToTranslate.greeting.textContent = t.greeting;
-    elementsToTranslate.subtitle.textContent = t.subtitle;
-    elementsToTranslate.aboutTitle.textContent = t.aboutTitle;
-    elementsToTranslate.aboutText1.textContent = t.aboutText1;
-    elementsToTranslate.aboutText2.textContent = t.aboutText2;
-    elementsToTranslate.skillsTitle.textContent = t.skillsTitle;
-
-    const skillsList = document.querySelectorAll('#skills li');
-    skillsList.forEach((li, i) => li.textContent = t.skills[i]);
-
-    elementsToTranslate.contactTitle.textContent = t.contactTitle;
-    elementsToTranslate.contactText.textContent = t.contactText;
-    elementsToTranslate.contactBtn.textContent = t.contactBtn;
-    elementsToTranslate.footer.textContent = t.footer;
-
-    localStorage.setItem('preferredLang', lang);
-
-    // Change flag
-    langToggle.textContent = lang === 'en' ? '🇳🇱' : '🇬🇧';
-    langToggle.setAttribute('aria-label', lang === 'en' ? 'Switch to Nederlands' : 'Switch to English');
-  }
-
-  setLanguage(currentLang);
-
-  langToggle.addEventListener('click', () => {
-    currentLang = currentLang === 'en' ? 'nl' : 'en';
     setLanguage(currentLang);
-  });
 
-  // === Dark Mode Toggle ===
-  const themeToggle = document.getElementById('theme-toggle');
-  const html = document.documentElement;
-  const savedTheme = localStorage.getItem('theme') || 'light';
-
-  if (savedTheme === 'dark') {
-    html.classList.add('dark');
-    themeToggle.textContent = '☀️ Light Mode';
-  }
-
-  themeToggle.addEventListener('click', () => {
-    if (html.classList.contains('dark')) {
-      html.classList.remove('dark');
-      themeToggle.textContent = '🌙 Dark Mode';
-      localStorage.setItem('theme', 'light');
-    } else {
-      html.classList.add('dark');
-      themeToggle.textContent = '☀️ Light Mode';
-      localStorage.setItem('theme', 'dark');
+    if (langToggle) {
+      langToggle.addEventListener('click', () => {
+        currentLang = currentLang === 'en' ? 'nl' : 'en';
+        setLanguage(currentLang);
+      });
     }
-  });
-</script>
+
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+
+    if (savedTheme === 'dark') {
+      html.classList.add('dark');
+      if (themeToggle) themeToggle.textContent = '☀️ Light Mode';
+    }
+
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        if (html.classList.contains('dark')) {
+          html.classList.remove('dark');
+          themeToggle.textContent = '🌙 Dark Mode';
+          localStorage.setItem('theme', 'light');
+        } else {
+          html.classList.add('dark');
+          themeToggle.textContent = '☀️ Light Mode';
+          localStorage.setItem('theme', 'dark');
+        }
+      });
+    }
+  </script>
 </body>
 </html>
