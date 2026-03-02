@@ -66,7 +66,6 @@ header {
 
 .toggle-btn:hover {
   background: var(--accent-dark);
-  transform: translateY(-1px);
 }
 
 .lang-btn {
@@ -82,19 +81,18 @@ header {
   height: 1.5rem;
   object-fit: cover;
   border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
 .nav {
   display: flex;
-  gap: 2.2rem;
+  gap: 2rem;
 }
 
 .nav a {
   color: var(--header-text);
   text-decoration: none;
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 500;
   transition: color 0.2s;
 }
 
@@ -147,7 +145,6 @@ header {
 
 .social-link:hover {
   background: var(--accent-dark);
-  transform: translateY(-2px);
 }
 
 section {
@@ -176,22 +173,6 @@ h2 {
   text-align: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   font-weight: 500;
-}
-
-.btn {
-  display: inline-block;
-  background: var(--accent);
-  color: white;
-  padding: 0.8rem 1.6rem;
-  border-radius: 2rem;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.2s;
-}
-
-.btn:hover {
-  background: var(--accent-dark);
-  transform: translateY(-2px);
 }
 
 footer {
