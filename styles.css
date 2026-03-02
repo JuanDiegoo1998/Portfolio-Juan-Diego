@@ -18,7 +18,90 @@ header {
   position: sticky;
   top: 0;
   z-index: 10;
-  box-shadow: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.8rem 1.5rem; /* altura total ~2.5-3rem, ajustable */
+}
+
+.header-left button {
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.header-left button:hover {
+  background: #005bb5;
+}
+
+.header-center h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: var(--header-text);
+}
+
+/* Derecha: nav + botón idioma */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.header-right nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.8rem;
+}
+
+.header-right nav a {
+  color: var(--header-text);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.header-right nav a:hover {
+  color: var(--accent);
+}
+
+#lang-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+
+#lang-toggle:hover {
+  transform: scale(1.08);
+}
+
+.flag-img {
+  width: 28px;
+  height: 20px;
+  object-fit: contain;
+  border-radius: 3px;
 }
 
 nav ul {
@@ -113,7 +196,6 @@ footer {
   color: var(--header-text);
 }
 
-/* === Theme and Language Toggles === */
 #theme-toggle {
   position: fixed;
   top: 0.5rem;
@@ -143,31 +225,6 @@ footer {
   vertical-align: middle;
 }
 
-#lang-toggle {
-  position: fixed;
-  top: 0.5rem;
-  right: 1rem;
-  z-index: 1000;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: #0070f3;
-  color: white;
-  font-size: 1.8rem;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-  transition: all 0.3s ease;
-}
-
-#lang-toggle:hover {
-  transform: scale(1.1);
-  background: #005bb5;
-}
-
 .dark #theme-toggle,
 .dark #lang-toggle {
   background: #4da6ff;
@@ -178,7 +235,6 @@ footer {
   background: #3399ff;
 }
 
-/* CSS Variables */
 :root {
   --bg: #f9f9f9;
   --text: #333;
@@ -225,11 +281,37 @@ footer {
   background: #4da6ff;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   nav ul {
     flex-direction: column;
     gap: 1rem;
+  }
+
+  .header-container {
+    padding: 0.6rem 1rem;
+    flex-wrap: wrap;
+  }
+
+  .header-center {
+    order: 3;
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+
+  .header-right nav ul {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+
+  #lang-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .flag-img {
+    width: 24px;
+    height: 18px;
   }
 }
 

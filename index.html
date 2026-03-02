@@ -9,22 +9,35 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Toggles -->
-  <button id="theme-toggle" aria-label="Toggle dark mode">🌙 Dark Mode</button>
-  <button id="lang-toggle" aria-label="Toggle language">
-    <img src="nl.png" alt="Switch to Nederlands" style="width:32px; height:24px;">
-  </button>
 
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+<header>
+  <div class="header-container">
+    <div class="header-left">
+      <button id="theme-toggle" aria-label="Toggle dark mode">
+        🌙 Dark Mode
+      </button>
+    </div>
+
+    <div class="header-center">
+      <h1>Juan Diego</h1>
+    </div>
+
+    <div class="header-right">
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button id="lang-toggle" aria-label="Toggle language">
+        <img src="nl.png" alt="Switch to Nederlands" class="flag-img">
+      </button>
+    </div>
+  </div>
+</header>
 
   <main>
     <section id="home" class="hero">
