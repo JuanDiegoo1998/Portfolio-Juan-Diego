@@ -85,19 +85,39 @@ header {
 
 .nav {
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  gap: 3rem; /* espacio amplio y elegante entre links */
 }
 
 .nav a {
-  color: var(--header-text);
+  color: #ffffff;
   text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: color 0.2s;
+  font-size: 1.25rem; /* tamaño principal de header, se ve importante */
+  font-weight: 600;   /* peso fuerte pero no exagerado */
+  letter-spacing: 0.05em; /* separación clara y moderna */
+  padding: 0.6rem 0.4rem;
+  position: relative;
+  transition: color 0.25s ease;
 }
 
 .nav a:hover {
-  color: var(--accent);
+  color: #60a5fa; /* azul vivo y actual para hover */
+}
+
+/* Efecto underline elegante y animado */
+.nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background: #60a5fa;
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
 }
 
 .hero {
