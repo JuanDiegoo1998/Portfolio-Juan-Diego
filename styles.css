@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
@@ -14,94 +19,10 @@ body {
 header {
   background: var(--header-bg);
   color: var(--header-text);
-  padding: 0.4rem 1rem !important;
   position: sticky;
   top: 0;
   z-index: 10;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0.8rem 1.5rem; /* altura total ~2.5-3rem, ajustable */
-}
-
-.header-left button {
-  padding: 0.5rem 1rem;
-  border-radius: 30px;
-  background: var(--accent);
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 0.95rem;
-  font-weight: 600;
-  transition: all 0.2s;
-}
-
-.header-left button:hover {
-  background: #005bb5;
-}
-
-.header-center h1 {
-  margin: 0;
-  font-size: 1.4rem;
-  color: var(--header-text);
-}
-
-/* Derecha: nav + botón idioma */
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.header-right nav ul {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  gap: 1.8rem;
-}
-
-.header-right nav a {
-  color: var(--header-text);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: color 0.2s;
-}
-
-.header-right nav a:hover {
-  color: var(--accent);
-}
-
-#lang-toggle {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--accent);
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  transition: transform 0.2s;
-}
-
-#lang-toggle:hover {
-  transform: scale(1.08);
-}
-
-.flag-img {
-  width: 28px;
-  height: 20px;
-  object-fit: contain;
-  border-radius: 3px;
 }
 
 nav ul {
@@ -109,6 +30,8 @@ nav ul {
   display: flex;
   justify-content: center;
   gap: 2rem;
+  padding: 1rem 0;
+  margin: 0;
 }
 
 nav a {
@@ -196,35 +119,55 @@ footer {
   color: var(--header-text);
 }
 
-#theme-toggle {
+/* Botones toggles */
+#theme-toggle,
+#lang-toggle {
   position: fixed;
-  top: 0.5rem;
-  left: 1rem;
-  z-index: 1000;
-  padding: 0.6rem 1.2rem;
-  border-radius: 50px;
-  background: #0070f3;
-  color: white;
+  top: 0.6rem;
+  z-index: 2000;
   border: none;
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: all 0.2s;
+}
+
+#theme-toggle {
+  left: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  background: var(--accent);
+  color: white;
   font-weight: 600;
-  font-size: 1rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-  transition: all 0.3s ease;
+  font-size: 0.95rem;
 }
 
 #theme-toggle:hover {
   background: #005bb5;
-  transform: translateY(-2px);
+}
+
+#lang-toggle {
+  right: 1rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#lang-toggle:hover {
+  transform: scale(1.08);
 }
 
 #lang-toggle img {
   width: 32px;
   height: 24px;
   object-fit: contain;
-  vertical-align: middle;
+  border-radius: 4px;
 }
 
+/* Dark mode adjustments */
 .dark #theme-toggle,
 .dark #lang-toggle {
   background: #4da6ff;
@@ -235,6 +178,7 @@ footer {
   background: #3399ff;
 }
 
+/* Variables */
 :root {
   --bg: #f9f9f9;
   --text: #333;
@@ -253,69 +197,25 @@ footer {
   --accent: #4da6ff;
 }
 
-#lang-toggle {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 10000;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: #0070f3;
-  color: white;
-  font-size: 2rem;
-  border: none;
-  cursor: pointer;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
-}
-
-#lang-toggle:hover {
-  transform: scale(1.15);
-}
-
-.dark #lang-toggle {
-  background: #4da6ff;
-}
-
+/* Responsive */
 @media (max-width: 768px) {
   nav ul {
     flex-direction: column;
     gap: 1rem;
   }
 
-  .header-container {
-    padding: 0.6rem 1rem;
-    flex-wrap: wrap;
-  }
-
-  .header-center {
-    order: 3;
-    width: 100%;
-    text-align: center;
-    margin-top: 0.5rem;
-  }
-
-  .header-right nav ul {
-    gap: 1rem;
+  #theme-toggle {
     font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
   }
 
   #lang-toggle {
-    width: 36px;
-    height: 36px;
+    width: 42px;
+    height: 42px;
   }
 
-  .flag-img {
-    width: 24px;
-    height: 18px;
+  #lang-toggle img {
+    width: 28px;
+    height: 21px;
   }
-}
-
-html, body {
-  margin: 0 !important;
-  padding: 0 !important;
 }
