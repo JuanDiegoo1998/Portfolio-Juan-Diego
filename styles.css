@@ -33,75 +33,69 @@ body {
 
 header {
   background: var(--header-bg);
-  color: var(--header-text);
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
 }
 
-.header-flex {
+.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0.8rem 1.5rem;
-  height: 3.2rem;
+  height: 3.5rem;
 }
 
-.theme-btn, .lang-btn {
+.toggle-btn {
   background: var(--accent);
   color: white;
   border: none;
   border-radius: 999px;
-  padding: 0.45rem 0.9rem;
-  font-size: 0.92rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  transition: all 0.18s ease;
+  transition: all 0.2s ease;
 }
 
-.theme-btn:hover, .lang-btn:hover {
+.toggle-btn:hover {
   background: var(--accent-dark);
   transform: translateY(-1px);
 }
 
 .lang-btn {
   padding: 0.4rem;
-  width: 2.6rem;
-  height: 2.6rem;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
   justify-content: center;
 }
 
 .flag {
-  width: 1.9rem;
-  height: 1.4rem;
+  width: 2rem;
+  height: 1.5rem;
   object-fit: cover;
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
-.logo {
-  margin: 0;
-  font-size: 1.35rem;
-  font-weight: 700;
-}
-
 .nav {
   display: flex;
-  gap: 1.8rem;
+  gap: 2.2rem;
 }
 
 .nav a {
   color: var(--header-text);
   text-decoration: none;
-  font-size: 0.98rem;
-  font-weight: 500;
-  transition: color 0.18s;
+  font-size: 1.05rem;
+  font-weight: 600;
+  transition: color 0.2s;
 }
 
 .nav a:hover {
@@ -111,11 +105,6 @@ header {
 .hero {
   text-align: center;
   padding: 6rem 1.5rem 4rem;
-  background: linear-gradient(to bottom, #f0f4ff, var(--bg));
-}
-
-.dark .hero {
-  background: linear-gradient(to bottom, #1a1a2e, var(--bg));
 }
 
 .avatar {
@@ -128,8 +117,8 @@ header {
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-.hero h2 {
-  font-size: 2.6rem;
+.hero h1 {
+  font-size: 2.8rem;
   margin-bottom: 0.8rem;
 }
 
@@ -167,8 +156,8 @@ section {
   margin: 0 auto;
 }
 
-h3 {
-  font-size: 2.1rem;
+h2 {
+  font-size: 2.2rem;
   text-align: center;
   margin-bottom: 2rem;
 }
@@ -211,14 +200,4 @@ footer {
   background: var(--header-bg);
   color: var(--header-text);
   font-size: 0.9rem;
-}
-
-/* Dark mode adjustments */
-.dark .hero {
-  background: linear-gradient(to bottom, #0f172a, #0f0f0f);
-}
-
-.dark .skills-grid li {
-  background: #1e293b;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }

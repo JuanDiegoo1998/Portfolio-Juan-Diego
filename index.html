@@ -9,22 +9,20 @@
 </head>
 <body>
   <header>
-    <div class="container header-flex">
-      <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+    <div class="header">
+      <button id="theme-toggle" class="toggle-btn">
         <span class="icon">🌙</span> Dark Mode
       </button>
 
-      <h1 class="logo">Juan Diego</h1>
-
-      <nav class="nav">
+      <nav class="main-nav">
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
       </nav>
 
-      <button id="lang-toggle" class="lang-btn" aria-label="Toggle language">
-        <img src="nl.png" alt="Nederlands" class="flag">
+      <button id="lang-toggle" class="toggle-btn lang-btn">
+        <img src="nl.png" alt="Switch to Nederlands" class="flag">
       </button>
     </div>
   </header>
@@ -32,23 +30,23 @@
   <main>
     <section id="home" class="hero">
       <img src="pfp.jpg" alt="Juan Diego" class="avatar">
-      <h2>Hi, I'm Juan Diego</h2>
-      <p>Recent Computer Engineering Graduate<br>Seeking IT Traineeship in the Netherlands 2026</p>
+      <h1>Hi, I'm Juan Diego</h1>
+      <p>Recent Computer Engineering Graduate • Seeking IT Traineeship in the Netherlands 2026</p>
       <div class="social">
-        <a href="https://linkedin.com/in/juan-diego-martinez-diaz" class="social-link">LinkedIn</a>
-        <a href="mailto:tuemail@example.com" class="social-link">Email</a>
+        <a href="https://www.linkedin.com/in/juan-diego-martinez-diaz/" class="social-link">LinkedIn</a>
+        <a href="mailto:your.email@example.com" class="social-link">Email</a>
         <a href="https://github.com/JuanDiegoo1998" class="social-link">GitHub</a>
       </div>
     </section>
 
     <section id="about">
-      <h3>About Me</h3>
+      <h2>About Me</h2>
       <p>I'm a recent graduate passionate about technology. I moved to Dordrecht, Netherlands, to start my career in IT through a traineeship. Quick learner, focused on web development basics and Python, open to cloud/DevOps roles.</p>
       <p>Why the Netherlands? Innovative tech scene, great work-life balance, and strong support for juniors.</p>
     </section>
 
     <section id="skills">
-      <h3>Skills</h3>
+      <h2>Skills</h2>
       <ul class="skills-grid">
         <li>HTML5 & CSS3</li>
         <li>JavaScript (basic/intermediate)</li>
@@ -60,18 +58,18 @@
     </section>
 
     <section id="contact">
-      <h3>Contact</h3>
+      <h2>Contact</h2>
       <p>I'm open to traineeship opportunities! Feel free to reach out.</p>
-      <a href="https://linkedin.com/in/juan-diego-martinez-diaz" class="btn">Connect on LinkedIn</a>
+      <a href="https://www.linkedin.com/in/juan-diego-martinez-diaz/" class="btn">Connect on LinkedIn</a>
     </section>
   </main>
 
   <footer>
-    <p>© 2026 Juan Diego · Made in the Netherlands</p>
+    <p>© 2026 Juan Diego • Made in the Netherlands</p>
   </footer>
 
   <script>
-    // === Dark mode ===
+    // Dark mode
     const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
     const savedTheme = localStorage.getItem('theme') || 'light';
@@ -93,7 +91,7 @@
       }
     });
 
-    // === Language toggle ===
+    // Language toggle
     const langToggle = document.getElementById('lang-toggle');
     let currentLang = localStorage.getItem('lang') || 'en';
 
@@ -101,39 +99,39 @@
       en: {
         title: "Juan Diego | IT Traineeship Netherlands",
         greeting: "Hi, I'm Juan Diego",
-        subtitle: "Recent Computer Engineering Graduate<br>Seeking IT Traineeship in the Netherlands 2026",
+        subtitle: "Recent Computer Engineering Graduate • Seeking IT Traineeship in the Netherlands 2026",
         aboutTitle: "About Me",
         about1: "I'm a recent graduate passionate about technology. I moved to Dordrecht, Netherlands, to start my career in IT through a traineeship. Quick learner, focused on web development basics and Python, open to cloud/DevOps roles.",
         about2: "Why the Netherlands? Innovative tech scene, great work-life balance, and strong support for juniors.",
         skillsTitle: "Skills",
         contactTitle: "Contact",
         contactText: "I'm open to traineeship opportunities! Feel free to reach out.",
-        footer: "© 2026 Juan Diego · Made in the Netherlands"
+        footer: "© 2026 Juan Diego • Made in the Netherlands"
       },
       nl: {
         title: "Juan Diego | IT Traineeship Nederland",
         greeting: "Hoi, ik ben Juan Diego",
-        subtitle: "Recent afgestudeerd in Informatica<br>Op zoek naar IT Traineeship in Nederland 2026",
+        subtitle: "Recent afgestudeerd in Informatica • Op zoek naar IT Traineeship in Nederland 2026",
         aboutTitle: "Over mij",
         about1: "Ik ben een recent afgestudeerde met passie voor technologie. Ik ben naar Dordrecht, Nederland verhuisd om mijn carrière in IT te starten via een traineeship. Snelle leerling, gefocust op basis webontwikkeling en Python, open voor cloud/DevOps rollen.",
         about2: "Waarom Nederland? Innovatieve tech-scene, uitstekende werk-privé balans en sterke ondersteuning voor juniors.",
         skillsTitle: "Vaardigheden",
         contactTitle: "Contact",
         contactText: "Ik sta open voor traineeship-kansen! Neem gerust contact op.",
-        footer: "© 2026 Juan Diego · Gemaakt in Nederland"
+        footer: "© 2026 Juan Diego • Gemaakt in Nederland"
       }
     };
 
     function setLang(lang) {
       const t = texts[lang];
       document.title = t.title;
-      document.querySelector('.hero h2').textContent = t.greeting;
+      document.querySelector('.hero h1').textContent = t.greeting;
       document.querySelector('.hero p').innerHTML = t.subtitle;
-      document.querySelector('#about h3').textContent = t.aboutTitle;
+      document.querySelector('#about h2').textContent = t.aboutTitle;
       document.querySelector('#about p:nth-child(2)').textContent = t.about1;
       document.querySelector('#about p:nth-child(3)').textContent = t.about2;
-      document.querySelector('#skills h3').textContent = t.skillsTitle;
-      document.querySelector('#contact h3').textContent = t.contactTitle;
+      document.querySelector('#skills h2').textContent = t.skillsTitle;
+      document.querySelector('#contact h2').textContent = t.contactTitle;
       document.querySelector('#contact p').textContent = t.contactText;
       document.querySelector('footer p').textContent = t.footer;
 
